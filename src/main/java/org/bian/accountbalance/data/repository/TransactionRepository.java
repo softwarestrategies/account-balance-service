@@ -11,6 +11,6 @@ import java.util.UUID;
 @Repository
 public interface TransactionRepository extends ReactiveCrudRepository<Transaction, Integer> {
 
-    @Query("SELECT id, account_id, created_on, type, amount FROM transaction WHERE account_id = :accountId")
+    @Query("SELECT id, created_on, type, amount FROM transaction WHERE account_id = :accountId")
     Flux<Transaction> findByAccountId(UUID accountId);
 }
