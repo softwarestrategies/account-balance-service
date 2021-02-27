@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+
+  postgresql:
+    image: postgres:13.0-alpine
+    container_name: postgresql-account-balance-service
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=changeme
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./docker-local-data/postgresql/data:/var/lib/postgresql/data
+      - ./scripts/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    restart: always
+
+  zookeeper:
+    image: wurstmeister/zookeeper:3.4.6
+    container_name: zookeeper-account-balance
+    ports:
+      - "2181:2181"
+
+  kafka:
+    image: wurstmeister/kafka:2.13-2.6.0
+    container_name: kafka-account-balance
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_HOST: localhost
+      KAFKA_PORT: 9092
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_CREATE_TOPICS: "Transactions:1:1"
+      KAFKA_ADVERTISED_HOST_NAME: localhost
+      KAFKA_ADVERTISED_PORT: 9092
+    volumes:
+      - ./docker-local-data/var/run/docker.sock:/var/run/docker.sock
+      - ./docker-local-data/kafka/data:/var/lib/kafka/data
+
