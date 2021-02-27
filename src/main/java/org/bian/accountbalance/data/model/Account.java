@@ -18,10 +18,6 @@ public class Account {
     @Column("id")
     private UUID id;
 
-    @Version
-    @Column("version")
-    private Integer version;
-
     @CreatedDate
     @JsonIgnore
     @Column("created_on")

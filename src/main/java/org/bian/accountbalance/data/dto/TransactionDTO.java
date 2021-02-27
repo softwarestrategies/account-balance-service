@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 public class TransactionDTO {
 
     private Integer id;
-    private String accountNumber;
     private LocalDateTime transactionTs;
     private String type;
     private BigDecimal amount;

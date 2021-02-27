@@ -29,7 +29,6 @@ public class TransactionServiceImpl implements TransactionService {
     private static Mono<TransactionDTO> convertToDTO(Transaction transaction) {
         TransactionDTO transactionDTO = new TransactionDTO();
         transactionDTO.setId(transaction.getId());
-        transactionDTO.setAccountNumber(transaction.getAccountId().toString());
         transactionDTO.setTransactionTs(transaction.getCreatedOn());
         transactionDTO.setType(transaction.getType());
         transactionDTO.setAmount(transaction.getAmount());

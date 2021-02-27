@@ -2,6 +2,7 @@ package org.bian.accountbalance.service.impl;
 
 import org.bian.accountbalance.data.dto.BalanceDTO;
 import org.bian.accountbalance.data.repository.AccountRepository;
+import org.bian.accountbalance.exception.EntityNotFoundException;
 import org.bian.accountbalance.service.AccountService;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
@@ -16,8 +17,9 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Mono<BalanceDTO> getBalance(String accountNumber) {
-        return accountRepository.findById(accountNumber)
-                .flatMap(a -> Mono.just(new BalanceDTO(a.getId().toString(),a.getBalance())));
+    public Mono<BalanceDTO> getBalance(String id) {
+        return accountRepository.findById(id)
+                .flatMap(a -> Mono.just(new BalanceDTO(a.getId().toString(),a.getBalance())))
+                .switchIfEmpty(Mono.error(new EntityNotFoundException("Account not found: " + id)));
     }
 }

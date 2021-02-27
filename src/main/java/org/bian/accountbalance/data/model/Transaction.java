@@ -18,19 +18,10 @@ public class Transaction {
     @Column("id")
     private Integer id;
 
-    @Version
-    @Column("version")
-    private Integer version;
-
     @CreatedDate
     @JsonIgnore
     @Column("created_on")
     private LocalDateTime createdOn = LocalDateTime.now();
-
-    @LastModifiedDate
-    @JsonIgnore
-    @Column("modified_on")
-    private LocalDateTime modifiedOn = LocalDateTime.now();
 
     @Column("account_id")
     private UUID accountId;

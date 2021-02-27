@@ -5,5 +5,5 @@ import reactor.core.publisher.Mono;
 
 public interface AccountService {
 
-    Mono<BalanceDTO> getBalance(String accountNumber);
+    Mono<BalanceDTO> getBalance(String id);
 }
