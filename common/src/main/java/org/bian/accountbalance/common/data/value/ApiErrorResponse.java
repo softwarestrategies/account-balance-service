@@ -1,4 +1,4 @@
-package org.bian.accountbalance.data.value;
+package org.bian.accountbalance.common.data.value;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;

@@ -1,1 +1,5 @@
 rootProject.name = 'account-balance-service'
+
+include("common", 'resource-server')
+
+

@@ -1,4 +1,4 @@
-# IBM Interview Challenge
+# Account Balance-related Interview Challenge
 
 ## DOCKER
 
