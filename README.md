@@ -20,4 +20,10 @@ The first time you run this, a couple of things will happen:
 
               bash# kafka-topics.sh --list --bootstrap-server localhost:9092
 
+## Testcontainers
 
+For testcontainers to work properly (at least on my Mac, for now, and I am not alone), these Docker images need to be
+pulled to the dev machine where tests will be run:
+
+- testcontainers/ryuk:0.3.0
+- testcontainersofficial/ryuk
