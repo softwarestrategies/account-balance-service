@@ -1,6 +1,6 @@
 package org.bian.accountbalance.resourceserver.service.impl;
 
-import org.bian.accountbalance.resourceserver.data.dto.TransactionDTO;
+import org.bian.accountbalance.common.data.dto.TransactionDTO;
 import org.bian.accountbalance.resourceserver.data.model.Transaction;
 import org.bian.accountbalance.resourceserver.data.repository.TransactionRepository;
 import org.bian.accountbalance.resourceserver.service.TransactionService;

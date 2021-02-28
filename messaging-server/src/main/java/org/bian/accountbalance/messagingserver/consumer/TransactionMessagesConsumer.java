@@ -2,7 +2,7 @@ package org.bian.accountbalance.messagingserver.consumer;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.bian.accountbalance.messagingserver.data.TransactionCreatedMessage;
+import org.bian.accountbalance.common.data.message.TransactionCreatedMessage;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 

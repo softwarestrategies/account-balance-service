@@ -1,4 +1,4 @@
-package org.bian.accountbalance.messagingserver.data;
+package org.bian.accountbalance.common.data.message;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;

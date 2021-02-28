@@ -1,6 +1,6 @@
 package org.bian.accountbalance.resourceserver.service;
 
-import org.bian.accountbalance.resourceserver.data.dto.TransactionDTO;
+import org.bian.accountbalance.common.data.dto.TransactionDTO;
 import reactor.core.publisher.Flux;
 
 public interface TransactionService {

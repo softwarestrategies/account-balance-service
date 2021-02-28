@@ -2,7 +2,7 @@ package org.bian.accountbalance.resourceserver.service;
 
 import io.r2dbc.spi.ConnectionFactory;
 import org.bian.accountbalance.resourceserver.BaseContainerEnabledTest;
-import org.bian.accountbalance.resourceserver.data.dto.BalanceDTO;
+import org.bian.accountbalance.common.data.dto.BalanceDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;

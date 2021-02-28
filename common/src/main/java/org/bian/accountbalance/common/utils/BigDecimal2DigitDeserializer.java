@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.deser.std.NumberDeserializers;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class BigDecimal2DigitDeserializer extends NumberDeserializers.BigDecimalDeserializer {
 
@@ -14,7 +15,7 @@ public class BigDecimal2DigitDeserializer extends NumberDeserializers.BigDecimal
         BigDecimal value = super.deserialize(p, ctxt);
 
         // set scale
-        value = value.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+        value = value.setScale(2,  RoundingMode.HALF_EVEN);
 
         return value;
     }

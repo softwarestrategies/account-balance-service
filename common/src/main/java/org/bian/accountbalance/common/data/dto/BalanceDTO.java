@@ -1,4 +1,4 @@
-package org.bian.accountbalance.resourceserver.data.dto;
+package org.bian.accountbalance.common.data.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
