@@ -14,11 +14,27 @@ The first time you run this, a couple of things will happen:
 
               account_balance=> \dt;
 
-- Both a Zookeeper & a Kafka containers will startup, with a topic created in Kafka name "Transactions".  This can be confirmed with the following:
+- Both a Zookeeper & a Kafka containers will startup, with a topic created in Kafka name "Transactions".  This can be confirmed with the following by listing topics.
 
         docker exec -it kafka-account-balance bash
 
               bash# kafka-topics.sh --list --bootstrap-server localhost:9092
+
+Then, on one you can start a producer and type in a few lines:
+
+    bash# kafka-console-producer.sh --broker-list localhost:9092 --topic AccountBalanceUpdated
+        >Here is something to process
+        >Here is something else to process
+        >
+
+    bash# kafka-console-producer.sh --broker-list localhost:9092 --topic TransactionCreated
+
+
+
+{"accountNumber": "4fa3179e-78b5-11eb-9439-0242ac130002", "lastUpdateTimestamp": "2020-01-01T01:02:03.8Z", "balance": 89.1}
+
+{"accountNumber": "4fa3179e-78b5-11eb-9439-0242ac130002", "transactionTs": "2020-01-03T01:02:03.8Z", "type": "DEPOSIT", "amount": 89.1}
+
 
 ## Testcontainers
 
