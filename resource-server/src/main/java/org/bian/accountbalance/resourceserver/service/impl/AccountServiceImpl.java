@@ -19,7 +19,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Mono<BalanceDTO> getBalance(String id) {
         return accountRepository.findById(id)
-                .flatMap(a -> Mono.just(new BalanceDTO(a.getId().toString(),a.getBalance())))
+                .flatMap(a -> Mono.just(new BalanceDTO(a.getBalance())))
                 .switchIfEmpty(Mono.error(new EntityNotFoundException("Account not found: " + id)));
     }
 }

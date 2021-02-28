@@ -8,13 +8,10 @@ import java.math.BigDecimal;
 @Data
 public class BalanceDTO {
 
-    private String accountNumber;
-
     @JsonFormat(shape = JsonFormat.Shape.STRING)
     private BigDecimal balance;
 
-    public BalanceDTO(String accountNumber, BigDecimal balance) {
-        this.accountNumber = accountNumber;
+    public BalanceDTO(BigDecimal balance) {
         this.balance = balance;
     }
 }
