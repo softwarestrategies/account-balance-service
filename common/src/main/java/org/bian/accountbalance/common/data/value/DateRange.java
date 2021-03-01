@@ -32,11 +32,17 @@ public class DateRange {
             startDate = LocalDateTime.from( LocalDate.now().atTime(0,0,0));
             endDate = LocalDateTime.from( LocalDate.now().atTime(23,59,59));
 
-            if ("last7days".equalsIgnoreCase(dateRangeDescriptor)) {
+            if ("today".equalsIgnoreCase(dateRangeDescriptor)) {
+                // Placeholder
+            }
+            else if ("last7days".equalsIgnoreCase(dateRangeDescriptor)) {
                 startDate = startDate.minusDays(6);
             }
             else if ("last30days".equalsIgnoreCase(dateRangeDescriptor)) {
                 startDate = startDate.minusDays(29);
+            }
+            else {
+                throw new RuntimeException("Invalid dateRangeDescriptor: " + dateRangeDescriptor);
             }
         }
     }
