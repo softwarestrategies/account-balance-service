@@ -24,11 +24,20 @@ CREATE TABLE transaction
     FOREIGN KEY (account_id) REFERENCES account (id)
 );
 
+CREATE INDEX idx_transaction_account_type ON transaction(account_id, type);
+CREATE INDEX idx_transaction_account_created ON transaction(account_id, created_on);
+CREATE INDEX idx_transaction_account_created_type ON transaction(account_id, created_on, type);
+
 INSERT INTO account(id, name, balance) VALUES ('4fa3179e-78b5-11eb-9439-0242ac130002', 'first account',  4316.00);
 INSERT INTO account(id, name, balance) VALUES ('27e85b94-791c-11eb-9439-0242ac130002', 'second account', 2500.00);
 
+INSERT INTO transaction(account_id, created_on, type, amount) VALUES ('4fa3179e-78b5-11eb-9439-0242ac130002', NOW() - INTERVAL '35 DAY' , 'DEPOSIT',  5000.00);
+INSERT INTO transaction(account_id, created_on, type, amount) VALUES ('4fa3179e-78b5-11eb-9439-0242ac130002', NOW() - INTERVAL '29 DAY' , 'DEPOSIT',  5000.00);
+INSERT INTO transaction(account_id, created_on, type, amount) VALUES ('4fa3179e-78b5-11eb-9439-0242ac130002', NOW() - INTERVAL '12 DAY' , 'DEPOSIT',  5000.00);
+INSERT INTO transaction(account_id, created_on, type, amount) VALUES ('4fa3179e-78b5-11eb-9439-0242ac130002', NOW() - INTERVAL '12 DAY' , 'DEPOSIT',  5000.00);
 INSERT INTO transaction(account_id, created_on, type, amount) VALUES ('4fa3179e-78b5-11eb-9439-0242ac130002', NOW() - INTERVAL '12 DAY' , 'DEPOSIT',  5000.00);
 INSERT INTO transaction(account_id, created_on, type, amount) VALUES ('4fa3179e-78b5-11eb-9439-0242ac130002', NOW() - INTERVAL '11 DAY' , 'WITHDRAW',  500.00);
 INSERT INTO transaction(account_id, created_on, type, amount) VALUES ('4fa3179e-78b5-11eb-9439-0242ac130002', NOW() - INTERVAL '6 DAY' ,  'DEPOSIT',   100.00);
 INSERT INTO transaction(account_id, created_on, type, amount) VALUES ('4fa3179e-78b5-11eb-9439-0242ac130002', NOW() - INTERVAL '5 DAY' ,  'WITHDRAW',  300.00);
 INSERT INTO transaction(account_id, created_on, type, amount) VALUES ('4fa3179e-78b5-11eb-9439-0242ac130002', NOW() - INTERVAL '4 DAY' ,  'DEPOSIT',    16.00);
+INSERT INTO transaction(account_id, created_on, type, amount) VALUES ('4fa3179e-78b5-11eb-9439-0242ac130002', NOW(),  'DEPOSIT',    6.00);
