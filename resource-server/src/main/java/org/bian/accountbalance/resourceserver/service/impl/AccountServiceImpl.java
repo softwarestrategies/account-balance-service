@@ -1,7 +1,7 @@
 package org.bian.accountbalance.resourceserver.service.impl;
 
-import org.bian.accountbalance.common.data.dto.BalanceDTO;
-import org.bian.accountbalance.common.data.value.ApiAccountBalanceUpdateRequest;
+import org.bian.accountbalance.common.data.api.BalanceResponse;
+import org.bian.accountbalance.common.data.api.UpdateAccountBalanceRequest;
 import org.bian.accountbalance.common.exception.EntityNotFoundException;
 import org.bian.accountbalance.resourceserver.data.repository.AccountRepository;
 import org.bian.accountbalance.resourceserver.service.AccountService;
@@ -20,15 +20,15 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Mono<BalanceDTO> getBalance(String id) {
+    public Mono<BalanceResponse> getBalance(String id) {
         return accountRepository.findById(id)
-                .flatMap(a -> Mono.just(new BalanceDTO(a.getBalance())))
+                .flatMap(a -> Mono.just(new BalanceResponse(a.getBalance())))
                 .switchIfEmpty(Mono.error(new EntityNotFoundException("Account not found: " + id)));
     }
 
     @Override
     @Transactional(readOnly = false)
-    public Mono<Void> updateAccountBalance(ApiAccountBalanceUpdateRequest request) {
+    public Mono<Void> updateAccountBalance(UpdateAccountBalanceRequest request) {
         return accountRepository.updateBalance(request.getAccountNumber(), request.getLastUpdateTimestamp(), request.getBalance());
     }
 }

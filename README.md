@@ -2,7 +2,15 @@
 
 ## DOCKER
 
-Startup Docker
+Startup Docker.
+
+There are 2 containers to pull ahead of time, which will be used for integration testing.  This is necessary for testcontainers to work properly (at least on my Mac, for now, and I am not alone), these Docker images need to be
+pulled to the dev machine where tests will be run:
+
+- testcontainers/ryuk:0.3.0
+- testcontainersofficial/ryuk
+
+Now we can start up the infrastructure needed for our system.
 
     # docker-compose up -d
 
@@ -23,23 +31,7 @@ The first time you run this, a couple of things will happen:
 Then, on one you can start a producer and type in a few lines:
 
     bash# kafka-console-producer.sh --broker-list localhost:9092 --topic AccountBalanceUpdated
-        >Here is something to process
-        >Here is something else to process
-        >
+        > {"accountNumber": "4fa3179e-78b5-11eb-9439-0242ac130002", "lastUpdateTimestamp": "2020-01-01T01:02:03.8Z", "balance": 89.1}
 
     bash# kafka-console-producer.sh --broker-list localhost:9092 --topic TransactionCreated
-
-
-
-{"accountNumber": "4fa3179e-78b5-11eb-9439-0242ac130002", "lastUpdateTimestamp": "2020-01-01T01:02:03.8Z", "balance": 89.1}
-
-{"accountNumber": "4fa3179e-78b5-11eb-9439-0242ac130002", "transactionTs": "2020-01-03T01:02:03.8Z", "type": "DEPOSIT", "amount": 89.1}
-
-
-## Testcontainers
-
-For testcontainers to work properly (at least on my Mac, for now, and I am not alone), these Docker images need to be
-pulled to the dev machine where tests will be run:
-
-- testcontainers/ryuk:0.3.0
-- testcontainersofficial/ryuk
+        > {"accountNumber": "4fa3179e-78b5-11eb-9439-0242ac130002", "transactionTs": "2020-01-03T01:02:03.8Z", "type": "DEPOSIT", "amount": 89.11}

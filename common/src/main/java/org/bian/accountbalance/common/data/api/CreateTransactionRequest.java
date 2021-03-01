@@ -1,4 +1,4 @@
-package org.bian.accountbalance.common.data.message;
+package org.bian.accountbalance.common.data.api;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
-public class TransactionCreatedMessage {
+public class CreateTransactionRequest {
 
     private UUID accountNumber;
     private LocalDateTime transactionTs;
@@ -20,5 +20,5 @@ public class TransactionCreatedMessage {
     @JsonDeserialize(using = BigDecimal2DigitDeserializer.class)
     private BigDecimal amount;
 
-    public TransactionCreatedMessage() {}
+    public CreateTransactionRequest() {}
 }

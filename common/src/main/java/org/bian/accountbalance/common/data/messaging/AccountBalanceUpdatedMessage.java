@@ -1,4 +1,4 @@
-package org.bian.accountbalance.common.data.value;
+package org.bian.accountbalance.common.data.messaging;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
-public class ApiAccountBalanceUpdateRequest {
+public class AccountBalanceUpdatedMessage {
 
     private UUID accountNumber;
     private LocalDateTime lastUpdateTimestamp;
@@ -18,4 +18,6 @@ public class ApiAccountBalanceUpdateRequest {
     @JsonFormat(shape = JsonFormat.Shape.STRING)
     @JsonDeserialize(using = BigDecimal2DigitDeserializer.class)
     private BigDecimal balance;
+
+    public AccountBalanceUpdatedMessage() {}
 }

@@ -1,4 +1,4 @@
-package org.bian.accountbalance.common.data.value;
+package org.bian.accountbalance.common.data.api;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
@@ -7,18 +7,18 @@ import java.io.Serializable;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class ApiErrorResponse implements Serializable {
+public class ErrorResponse implements Serializable {
 
     private int errorCode = 0;
     private String errorMessage;
 
-    public ApiErrorResponse() { }
+    public ErrorResponse() { }
 
-    public ApiErrorResponse(String errorMessage) {
+    public ErrorResponse(String errorMessage) {
         this.errorMessage = errorMessage;
     }
 
-    public ApiErrorResponse(int errorCode, String errorMessage) {
+    public ErrorResponse(int errorCode, String errorMessage) {
         this.errorCode = errorCode;
         this.errorMessage = errorMessage;
     }

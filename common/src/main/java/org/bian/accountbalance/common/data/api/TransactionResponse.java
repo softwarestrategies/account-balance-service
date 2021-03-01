@@ -1,4 +1,4 @@
-package org.bian.accountbalance.common.data.dto;
+package org.bian.accountbalance.common.data.api;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
-public class TransactionDTO {
+public class TransactionResponse {
 
     private Integer id;
     private LocalDateTime transactionTs;

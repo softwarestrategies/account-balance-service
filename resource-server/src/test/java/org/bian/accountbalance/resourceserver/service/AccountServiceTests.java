@@ -2,7 +2,7 @@ package org.bian.accountbalance.resourceserver.service;
 
 import io.r2dbc.spi.ConnectionFactory;
 import org.bian.accountbalance.resourceserver.BaseContainerEnabledTest;
-import org.bian.accountbalance.common.data.dto.BalanceDTO;
+import org.bian.accountbalance.common.data.api.BalanceResponse;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
@@ -40,7 +40,7 @@ public class AccountServiceTests extends BaseContainerEnabledTest {
     @Test
     @Order(1)
     public void findAll() {
-        BalanceDTO balanceDTO = accountService.getBalance("010c0558-7952-11eb-9439-0242ac130002").block();
-        Assertions.assertEquals(1500.00, balanceDTO.getBalance().doubleValue());
+        BalanceResponse balanceResponse = accountService.getBalance("010c0558-7952-11eb-9439-0242ac130002").block();
+        Assertions.assertEquals(1500.00, balanceResponse.getBalance().doubleValue());
     }
 }
