@@ -25,16 +25,24 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public Flux<TransactionResponse> getTransactions(String accountNumber, GetTransactionsRequest request) {
-        if (!StringUtils.isEmpty(request.getType())) {
-            return transactionRepository
-                    .findByAccountIdAndType(UUID.fromString(accountNumber), request.getType())
-                    .flatMap(TransactionServiceImpl::convertModelToResponse);
-        }
-        else if (!StringUtils.isEmpty(request.getDateRangeDescriptor())) {
+        if (!StringUtils.isEmpty(request.getDateRangeDescriptor())) {
             DateRange dateRange
                     = new DateRange(request.getDateRangeDescriptor(),request.getStartDate(), request.getEndDate());
+
+            if (!StringUtils.isEmpty(request.getType())) {
+                return transactionRepository
+                        .findByAccountIdAndTypeAndDate(UUID.fromString(accountNumber), request.getType(), dateRange.getStartDate(), dateRange.getEndDate())
+                        .flatMap(TransactionServiceImpl::convertModelToResponse);
+            }
+            else {
+                return transactionRepository
+                        .findByAccountIdAndDate(UUID.fromString(accountNumber), dateRange.getStartDate(), dateRange.getEndDate())
+                        .flatMap(TransactionServiceImpl::convertModelToResponse);
+            }
+        }
+        else if (!StringUtils.isEmpty(request.getType())) {
             return transactionRepository
-                    .findByAccountIdAndDateRange(UUID.fromString(accountNumber), dateRange.getStartDate(), dateRange.getEndDate())
+                    .findByAccountIdAndType(UUID.fromString(accountNumber), request.getType())
                     .flatMap(TransactionServiceImpl::convertModelToResponse);
         }
         else {

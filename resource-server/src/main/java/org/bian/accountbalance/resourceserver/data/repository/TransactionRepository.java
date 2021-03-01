@@ -12,12 +12,18 @@ import java.util.UUID;
 @Repository
 public interface TransactionRepository extends ReactiveCrudRepository<Transaction, Integer> {
 
-    @Query("SELECT id, created_on, type, amount FROM transaction WHERE account_id = :accountId AND upper(type) = upper(:type)")
+    @Query("SELECT id, created_on, type, amount FROM transaction WHERE account_id = :accountId" +
+            " AND upper(type) = upper(:type)")
     Flux<Transaction> findByAccountIdAndType(UUID accountId, String type);
 
-    @Query(
-            "SELECT id, created_on, type, amount FROM transaction " +
-            "WHERE account_id = :accountId AND created_on >= :start AND created_on <= :end"
+    @Query("SELECT id, created_on, type, amount FROM transaction WHERE account_id = :accountId" +
+            " AND created_on >= :start AND created_on <= :end"
     )
-    Flux<Transaction> findByAccountIdAndDateRange(UUID accountId, LocalDateTime start, LocalDateTime end);
+    Flux<Transaction> findByAccountIdAndDate(UUID accountId, LocalDateTime start, LocalDateTime end);
+
+    @Query("SELECT id, created_on, type, amount FROM transaction WHERE account_id = :accountId" +
+            " AND upper(type) = upper(:type)" +
+            " AND created_on >= :start AND created_on <= :end"
+    )
+    Flux<Transaction> findByAccountIdAndTypeAndDate(UUID accountId, String type, LocalDateTime start, LocalDateTime end);
 }
