@@ -1,9 +1,6 @@
 package org.bian.accountbalance.resourceserver.web;
 
-import org.bian.accountbalance.common.data.api.BalanceResponse;
-import org.bian.accountbalance.common.data.api.CreateTransactionRequest;
-import org.bian.accountbalance.common.data.api.TransactionResponse;
-import org.bian.accountbalance.common.data.api.UpdateAccountBalanceRequest;
+import org.bian.accountbalance.common.data.api.*;
 import org.bian.accountbalance.resourceserver.service.AccountService;
 import org.bian.accountbalance.resourceserver.service.TransactionService;
 import org.springframework.web.bind.annotation.*;
@@ -34,9 +31,8 @@ public class AccountApiController {
 
     @GetMapping("/{accountNumber}/transaction")
     public Flux<TransactionResponse> getTransactions(@PathVariable(required = true) String accountNumber,
-                                                     @RequestParam(name = "type", required = false) String typeFilter,
-                                                     @RequestParam(name = "date", required = false) String dateFilter) {
-        return transactionService.getTransactions(accountNumber, typeFilter, dateFilter);
+                                                     GetTransactionsRequest getTransactionsRequest) {
+        return transactionService.getTransactions(accountNumber, getTransactionsRequest);
     }
 
     @PostMapping("/{accountNumber}/transaction")

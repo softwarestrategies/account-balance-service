@@ -1,17 +1,17 @@
 package org.bian.accountbalance.resourceserver.service.impl;
 
+import io.micrometer.core.instrument.util.StringUtils;
 import org.bian.accountbalance.common.data.api.CreateTransactionRequest;
+import org.bian.accountbalance.common.data.api.GetTransactionsRequest;
 import org.bian.accountbalance.common.data.api.TransactionResponse;
+import org.bian.accountbalance.common.data.value.DateRange;
 import org.bian.accountbalance.resourceserver.data.model.Transaction;
 import org.bian.accountbalance.resourceserver.data.repository.TransactionRepository;
 import org.bian.accountbalance.resourceserver.service.TransactionService;
-import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Service
@@ -24,10 +24,22 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public Flux<TransactionResponse> getTransactions(String accountNumber, String typeFilter, String dateFilter) {
-        return transactionRepository
-                .findByAccountId(UUID.fromString(accountNumber))
-                .flatMap(TransactionServiceImpl::convertModelToResponse);
+    public Flux<TransactionResponse> getTransactions(String accountNumber, GetTransactionsRequest request) {
+        if (!StringUtils.isEmpty(request.getType())) {
+            return transactionRepository
+                    .findByAccountIdAndType(UUID.fromString(accountNumber), request.getType())
+                    .flatMap(TransactionServiceImpl::convertModelToResponse);
+        }
+        else if (!StringUtils.isEmpty(request.getDateRangeDescriptor())) {
+            DateRange dateRange
+                    = new DateRange(request.getDateRangeDescriptor(),request.getStartDate(), request.getEndDate());
+            return transactionRepository
+                    .findByAccountIdAndDateRange(UUID.fromString(accountNumber), dateRange.getStartDate(), dateRange.getEndDate())
+                    .flatMap(TransactionServiceImpl::convertModelToResponse);
+        }
+        else {
+            throw new RuntimeException("There needs to be some criteria");
+        }
     }
 
     private static Mono<TransactionResponse> convertModelToResponse(Transaction transaction) {

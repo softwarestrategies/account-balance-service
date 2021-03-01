@@ -6,11 +6,18 @@ import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Repository
 public interface TransactionRepository extends ReactiveCrudRepository<Transaction, Integer> {
 
-    @Query("SELECT id, created_on, type, amount FROM transaction WHERE account_id = :accountId")
-    Flux<Transaction> findByAccountId(UUID accountId);
+    @Query("SELECT id, created_on, type, amount FROM transaction WHERE account_id = :accountId AND upper(type) = upper(:type)")
+    Flux<Transaction> findByAccountIdAndType(UUID accountId, String type);
+
+    @Query(
+            "SELECT id, created_on, type, amount FROM transaction " +
+            "WHERE account_id = :accountId AND created_on >= :start AND created_on <= :end"
+    )
+    Flux<Transaction> findByAccountIdAndDateRange(UUID accountId, LocalDateTime start, LocalDateTime end);
 }
