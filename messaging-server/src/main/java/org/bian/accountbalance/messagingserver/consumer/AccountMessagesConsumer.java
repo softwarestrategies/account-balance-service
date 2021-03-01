@@ -2,8 +2,8 @@ package org.bian.accountbalance.messagingserver.consumer;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.bian.accountbalance.common.data.messaging.AccountBalanceUpdatedMessage;
 import org.bian.accountbalance.common.data.api.UpdateAccountBalanceRequest;
+import org.bian.accountbalance.common.data.messaging.AccountBalanceUpdatedMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -28,7 +28,7 @@ public class AccountMessagesConsumer {
         request.setLastUpdateTimestamp(message.getLastUpdateTimestamp());
         request.setBalance(message.getBalance());
 
-        String uriToUse = resourceServerApiBaseUrl + "/account"  + message.getAccountNumber() + "/accountbalance";
+        String uriToUse = resourceServerApiBaseUrl + "/account/"  + message.getAccountNumber() + "/accountbalance";
 
         try {
             webClient.patch()
