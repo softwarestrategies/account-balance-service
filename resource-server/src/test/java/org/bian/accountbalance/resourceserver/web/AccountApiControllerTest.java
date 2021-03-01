@@ -41,7 +41,7 @@ public class AccountApiControllerTest extends BaseContainerEnabledTest {
     @Order(1)
     public void findAll() {
         webTestClient.get()
-                .uri("/api/account/010c0558-7952-11eb-9439-0242ac130002")
+                .uri("/api/account/010c0558-7952-11eb-9439-0242ac130002/accountbalance")
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus().is2xxSuccessful()

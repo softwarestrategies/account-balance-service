@@ -19,7 +19,7 @@ public class AccountApiController {
         this.transactionService = transactionService;
     }
 
-    @GetMapping("/{accountNumber}")
+    @GetMapping("/{accountNumber}/accountbalance")
     public Mono<BalanceResponse> getBalance(@PathVariable(required = true) String accountNumber) {
         return accountService.getBalance(accountNumber);
     }
