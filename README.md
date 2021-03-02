@@ -2,9 +2,69 @@
 
 ## About
 
-This project is for an interview challenge/test conversation. It is using the following:
+This project is for an interview challenge/test conversation.  I love this.  They describe the exercise this way:
+
+    The purpose of this challenge is to have you work through a problem where the expectation is for you to produce an API. We have specifically opted to make the problem statement as generic as possible to allow you to:
+
+        Show us your thought process and creativity. That way the interview is fun.
+        Flex your technical muscles as much as you want on us.
+        Not get bored.
+
+## Problem Statement
+
+### The Data Feeds
+
+Let’s assume you have the two following data feeds:
+
+    Feed 1: The balances
+
+    This is a data feed, where each event represents a single balance update for a given account.
+
+    A single record looks like this
+
+        {"accountNumber": "abc", "lastUpdateTimestamp": "2020-01-01T01:02:03.8Z", "balance": 89.1}
+
+And:
+
+    Feed 2: The transactions
+
+    This is a data feed representing transactions that are occuring. Each record will be a single transaction at the bank. Keep in mind that there are two types of transactions: 1. DEPOSIT and 2. WITHDRAW.
+
+    A single record looks like this
+
+        For a DEPOSIT:
+
+            {"accountNumber": "abc", "transactionTs": "2020-01-03T01:02:03.8Z", "type": "DEPOSIT", "amount": 89.1}
+
+        Or a WITHDRAW
+
+            {"accountNumber": "abc", "transactionTs": "2020-01-03T01:02:03.8Z", "type": "WITHDRAW", "amount": 89.1}
+
+Consider this too:
+
+    What issues might come about if the size of the response from query 2 and 3 is too large. What if you had 1 million transactions in that time range range. Think about that and maybe implement a solution for it.
+
+
+### The API
+
+Write an API that can serve the following queries:
+
+- Given an accountNumber, return the latest balance.
+
+- Given an accountNumber and a time range such as: Today, Last 7 days, last Month and the more general case of a range between date X and date Y. For example, I should be able to ask for all my transactions between January 8th, 2019 and November 28th, 2020.
+    Repeat 2, but filter for type. I.E. Show me transactions with type WITHDRAW.
+
+### Some hints:
+
+- Make sure that any technical choice you are making is backed up by good reasoning. Why was one method, process, style, etc. used.
+  
+- Make reasonable assumptions about the problem. If any extra detail is left out, just ride the wave and make assumptions. There are no wrong answers here.
+  
+## Technologies Used
+
 - Java
 - Spring Boot, Spring Data, Spring Kafka
+- Reactive Frameworks (Spring Webflux, R2DBC)
 - Docker, Docker Compose  
 - PostgreSQL
 - Kafka
