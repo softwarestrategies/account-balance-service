@@ -70,6 +70,7 @@ Write an API that can serve the following queries:
 - Kafka
 - (Integration) Testing with JUnit & TestContainers 
 - Gradle
+- API Documentation with OpenAPI/Swagger
 
 This document is just to provide some context and some instructions, as I am not sure what may or may not be obvious.  Hopefully this is clear enough and that I didn't leave anything key out.
 
@@ -155,6 +156,10 @@ And on another tab, startup the Resource Server
     %  java -jar ./resource-server/build/libs/resource-server-0.0.1-SNAPSHOT.jar
 
 #### Test the REST API GET calls
+
+First of all, you can make a call with your browser to see the API mapping/documentation with OpenAPI/Swagger
+
+    http://localhost:7070/swagger-ui.html
 
 Open up a 3rd tab.
 
