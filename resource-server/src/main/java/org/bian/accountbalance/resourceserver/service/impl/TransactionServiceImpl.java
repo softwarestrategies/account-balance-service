@@ -9,12 +9,14 @@ import org.bian.accountbalance.resourceserver.data.model.Transaction;
 import org.bian.accountbalance.resourceserver.data.repository.TransactionRepository;
 import org.bian.accountbalance.resourceserver.service.TransactionService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.UUID;
 
 @Service
+@Transactional(readOnly = true)
 public class TransactionServiceImpl implements TransactionService {
 
     private final TransactionRepository transactionRepository;
@@ -60,6 +62,7 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
+    @Transactional(readOnly = false)
     public Mono<TransactionResponse> createTransaction(CreateTransactionRequest request) {
         return transactionRepository
                 .save(convertRequestToModel(request))
