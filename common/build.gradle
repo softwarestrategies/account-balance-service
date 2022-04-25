@@ -1,12 +1,12 @@
 plugins {
-    id 'org.springframework.boot' version '2.4.3'
+    id 'org.springframework.boot' version '2.6.7'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
 }
 
-group = 'io.softwarestrategies.projectx'
+group 'io.softwarestrategies.accountbalance'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '17'
 
 repositories {
     mavenCentral()
@@ -15,11 +15,11 @@ repositories {
 dependencies {
     implementation('org.springframework.boot:spring-boot-starter-validation')
 
-    compile("com.fasterxml.jackson.core:jackson-core:2.12.1")
-    compile("com.fasterxml.jackson.core:jackson-databind:2.12.1")
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.13.2'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.2.2'
 
-    compileOnly 'org.projectlombok:lombok:1.18.18'
-    annotationProcessor 'org.projectlombok:lombok:1.18.18'
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
 }
 
 test {

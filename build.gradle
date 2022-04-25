@@ -1,4 +1,4 @@
-group 'org.bian.accountbalance'
+group 'io.softwarestrategies.accountbalance'
 version '1.0-SNAPSHOT'
 
 

@@ -1,20 +1,20 @@
 plugins {
-    id 'org.springframework.boot' version '2.4.3'
+    id 'org.springframework.boot' version '2.6.7'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
 }
 
-group = 'org.bian.accountbalance'
+group 'io.softwarestrategies.accountbalance'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '17'
 
 repositories {
     mavenCentral()
 }
 
 ext {
-    set('springCloudVersion', "2020.0.1")
-    set('testcontainersVersion', "1.15.0")
+    set('springCloudVersion', "2021.0.1")
+    set('testcontainersVersion', "1.17.1")
 }
 
 dependencies {

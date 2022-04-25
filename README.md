@@ -80,10 +80,6 @@ These should be done before testing.
 
 Make sure that both Java and Docker are installed on the test machine
 
-Testcontainers needs (and least it seems to on my Mac) these 2 Docker Images pulled before testing
-- testcontainers/ryuk:0.3.0
-- testcontainersofficial/ryuk
-
 ## (Automated) Testing
 
 *NOTE: There are still more tests to write.*
