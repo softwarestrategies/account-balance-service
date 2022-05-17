@@ -2,7 +2,7 @@
 
 ## About
 
-This project is for an interview challenge/test conversation.  I love this.  They describe the exercise this way:
+This project was for an interview challenge/test conversation.  They describe the exercise this way:
 
     The purpose of this challenge is to have you work through a problem where the expectation is for you to produce an API. We have specifically opted to make the problem statement as generic as possible to allow you to:
 
