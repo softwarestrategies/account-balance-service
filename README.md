@@ -2,13 +2,19 @@
 
 ## About
 
-This project was for an interview challenge/test conversation.  They describe the exercise this way:
+This project was for an interview challenge & resulting test conversation.  It was pretty intended to be comprehensive & I also decided to go for it a bit and learn some new stuff.
+ 
+## Technologies Used
 
-    The purpose of this challenge is to have you work through a problem where the expectation is for you to produce an API. We have specifically opted to make the problem statement as generic as possible to allow you to:
-
-        Show us your thought process and creativity. That way the interview is fun.
-        Flex your technical muscles as much as you want on us.
-        Not get bored.
+- Java
+- Spring Boot, Spring Data, Spring Kafka
+- Reactive & Reactive Frameworks (Spring Webflux, R2DBC)
+- Docker, Docker Compose
+- PostgreSQL
+- Kafka
+- (Integration) Testing with JUnit & TestContainers
+- Gradle
+- API Documentation with OpenAPI/Swagger
 
 ## Problem Statement
 
@@ -59,20 +65,6 @@ Write an API that can serve the following queries:
 - Make sure that any technical choice you are making is backed up by good reasoning. Why was one method, process, style, etc. used.
   
 - Make reasonable assumptions about the problem. If any extra detail is left out, just ride the wave and make assumptions. There are no wrong answers here.
-  
-## Technologies Used
-
-- Java
-- Spring Boot, Spring Data, Spring Kafka
-- Reactive Frameworks (Spring Webflux, R2DBC)
-- Docker, Docker Compose  
-- PostgreSQL
-- Kafka
-- (Integration) Testing with JUnit & TestContainers 
-- Gradle
-- API Documentation with OpenAPI/Swagger
-
-This document is just to provide some context and some instructions, as I am not sure what may or may not be obvious.  Hopefully this is clear enough and that I didn't leave anything key out.
 
 ## Initial Setup
 
