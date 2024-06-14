@@ -1,5 +1,5 @@
 rootProject.name = 'account-balance-service'
 
-include("common", 'resource-server', 'messaging-server')
+include('common', 'resource-server', 'messaging-server')
 
 
