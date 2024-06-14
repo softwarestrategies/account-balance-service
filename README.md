@@ -2,7 +2,7 @@
 
 ## About
 
-This project was for an interview challenge & resulting test conversation.  It was pretty intended to be comprehensive & I also decided to go for it a bit and learn some new stuff.
+This project was for an interview challenge & resulting test conversation.  It was intended to be comprehensive & I also decided to go for it a bit and learn some new stuff.
  
 ## Technologies Used
 
@@ -17,6 +17,12 @@ This project was for an interview challenge & resulting test conversation.  It w
 - API Documentation with OpenAPI/Swagger
 
 ## Problem Statement
+
+They described the exercise this way:
+
+    The purpose of this challenge is to have you work through a problem where the expectation is for you to produce an API. We have specifically opted to make the problem statement as generic as possible to allow you to:
+
+    Show us your thought process and creativity. That way the interview is fun.  Flex your technical muscles as much as you want on us.  Not get bored.
 
 ### The Data Feeds
 
